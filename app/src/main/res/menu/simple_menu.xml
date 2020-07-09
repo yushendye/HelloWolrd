@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item android:id="@+id/ligh_dark"
+        android:title="Light / Dark Mode" />
+    <item android:id="@+id/calculator"
+        android:title="Calculator"/>
+    <item android:id="@+id/gallery"
+        android:title="Gallery"/>
+    <item android:title="Quit"
+        android:id="@+id/quit"/>
+</menu>

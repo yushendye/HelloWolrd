@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyCalculator">
+
+    <TextView
+        android:id="@+id/txt_output"
+        android:layout_width="match_parent"
+        android:textSize="30dp"
+        android:textColor="#000000"
+        android:hint="Output Here"
+        android:gravity="center"
+        android:layout_height="480dp"/>
+    
+    <TableLayout
+        android:id="@+id/operation_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:stretchColumns="*"
+
+
+        android:layout_below="@+id/txt_output">
+        <TableRow android:layout_width="wrap_content">
+            <Button
+                android:id="@+id/btn_clear"
+                android:text="C"
+                android:onClick="set"
+                android:textColor="#ffffff"
+                android:background="#000000"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/change_sign"
+                android:textColor="#ffffff"
+                android:background="#000000"
+                android:onClick="negate"
+                android:text="+/-"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/btn_mod"
+                android:text="%"
+                android:onClick="set"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:background="#000000"
+                android:textSize="30dp"/>
+
+            <ImageButton
+                android:onClick="erase"
+                android:layout_height="match_parent"
+                android:id="@+id/btn_back"
+                android:background="#000000"
+                android:src="@android:drawable/ic_input_delete"
+                android:textSize="30dp" />
+        </TableRow>
+
+        <TableRow android:layout_width="wrap_content">
+            <Button
+                android:id="@+id/btn_7"
+                android:onClick="set"
+                android:text="7"
+                android:textColor="#ffffff"
+                android:background="#000000"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/btn_8"
+                android:onClick="set"
+                android:textColor="#ffffff"
+                android:background="#000000"
+                android:text="8"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/btn_9"
+                android:text="9"
+                android:onClick="set"
+                android:textColor="#ffffff"
+                android:background="#000000"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/btn_devide"
+                android:textColor="#ffffff"
+                android:onClick="set"
+                android:text="/"
+                android:background="#000000"
+                android:textSize="30dp" />
+        </TableRow>
+
+        <TableRow android:layout_width="wrap_content">
+            <Button
+                android:id="@+id/btn_4"
+                android:text="4"
+                android:onClick="set"
+                android:textColor="#ffffff"
+                android:background="#000000"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/btn_5"
+                android:textColor="#ffffff"
+                android:onClick="set"
+                android:background="#000000"
+                android:text="5"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/btn_6"
+                android:text="6"
+                android:onClick="set"
+                android:textColor="#ffffff"
+                android:background="#000000"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/btn_prod"
+                android:textColor="#ffffff"
+                android:text="*"
+                android:onClick="set"
+                android:background="#000000"
+                android:textSize="30dp" />
+        </TableRow>
+
+        <TableRow android:layout_width="wrap_content">
+            <Button
+                android:id="@+id/btn_1"
+                android:text="1"
+                android:textColor="#ffffff"
+                android:background="#000000"
+                android:onClick="set"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/btn_2"
+                android:textColor="#ffffff"
+                android:background="#000000"
+                android:text="2"
+                android:onClick="set"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/btn_3"
+                android:text="3"
+                android:textColor="#ffffff"
+                android:background="#000000"
+                android:onClick="set"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/btn_sub"
+                android:textColor="#ffffff"
+                android:text="-"
+                android:onClick="set"
+                android:background="#000000"
+                android:textSize="30dp" />
+        </TableRow>
+
+        <TableRow android:layout_width="wrap_content">
+            <Button
+                android:id="@+id/btn_0"
+                android:onClick="set"
+                android:text="0"
+                android:textColor="#ffffff"
+                android:background="#000000"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/btn_dot"
+                android:textColor="#ffffff"
+                android:onClick="set"
+                android:background="#000000"
+                android:text="."
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/btn_equal"
+                android:text="="
+                android:textColor="#ffffff"
+                android:background="#000000"
+                android:onClick="set"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/btn_add"
+                android:textColor="#ffffff"
+                android:text="+"
+                android:onClick="set"
+                android:background="#000000"
+                android:textSize="30dp" />
+        </TableRow>
+
+    </TableLayout>
+</RelativeLayout>
