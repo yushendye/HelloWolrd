@@ -11,6 +11,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,17 +30,37 @@ public class RecyclerDemo extends AppCompatActivity {
     MovieAdapter movieAdapter;
     List<Movie> movieList;
     RecyclerView movies_recycler;
+    private static String URL = "https://raw.githubusercontent.com/FEND16/movie-json-data/master/json/top-rated-indian-movies-02.json";
 
     public void load_list(){
         movieList = new ArrayList<>();
-        movieList.add(new Movie("https://media.harrypotterfanzone.com/philosophers-stone-theatrical-poster-405x0-c-default.jpg", "Harry Potter and the Philosophers Stone", 9.5));
-        movieList.add(new Movie("https://media.harrypotterfanzone.com/chamber-of-secrets-theatrical-poster-600x0-c-default.jpg", "Harry Potter and the Chamber of Secrets", 9.3));
-        movieList.add(new Movie("https://media.harrypotterfanzone.com/prisoner-of-azkaban-theatrical-poster-320x0-c-default.jpg", "Harry Potter and the Prisoner of Azkaban", 9.6));
-        movieList.add(new Movie("https://media.harrypotterfanzone.com/goblet-of-fire-theatrical-poster-600x0-c-default.jpg", "Harry Potter and the Goblet of Fire", 9.7));
-        movieList.add(new Movie("https://media.harrypotterfanzone.com/order-of-the-phoenix-theatrical-poster-2-538x0-c-default.jpg", "Harry Potter and the Order of Pheonx", 9.0));
-        movieList.add(new Movie("https://media.harrypotterfanzone.com/half-blood-prince-theatrical-poster-600x0-c-default.jpg", "Harry Potter and the Half Blood Prince", 9.8));
-        movieList.add(new Movie("https://media.harrypotterfanzone.com/deathly-hallows-part-1-harry-poster-480x0-c-default.jpg", "Harry Potter and the Daethly Hallows Part I", 9.9));
-        movieList.add(new Movie("https://media.harrypotterfanzone.com/deathly-hallows-part-2-it-all-ends-poster-2-432x0-c-default.jpg", "Harry Potter and the Daethly Hallows Part II", 9.9));
+        StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray array = new JSONArray(response);
+                    for(int i = 0; i < array.length(); i++){
+                        JSONObject object = array.getJSONObject(i);
+                        Movie movie = new Movie();
+                        movie.setName(object.getString("title"));
+                        movie.setUrl("https://raw.githubusercontent.com/FEND16/movie-json-data/master/img/" + object.getString("poster"));
+                        movie.setRating(object.getDouble("imdbRating"));
+
+                        movieList.add(movie);
+                    }
+                }catch (JSONException e){
+                    Toast.makeText(getApplicationContext(), "Invalid handling", Toast.LENGTH_LONG).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        queue.add(request);
     }
 
     public void init_recycler(){
@@ -60,8 +92,7 @@ public class RecyclerDemo extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_demo);
 
         movies_recycler = findViewById(R.id.movie_recycler);
-
-
+        //load_list();
         init_recycler();
     }
 }

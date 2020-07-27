@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DateTimeDemo">
+
+    <DatePicker
+        android:id="@+id/date_picker"
+        android:layout_width="366dp"
+        android:layout_height="413dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_picker"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="Date"
+        android:textSize="20dp"
+        android:onClick="show_dial"
+        android:textColor="#000000"/>
+
+    <TimePicker
+        android:id="@+id/time"
+        android:timePickerMode="spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date"/>
+</RelativeLayout>
+</ScrollView>
